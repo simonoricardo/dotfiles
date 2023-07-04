@@ -1,0 +1,10 @@
+session: vigil
+
+root: ~/Programming/Perso/vigil/
+
+windows:
+  - name: code
+  - name: front
+    commands:
+      - docker compose up -d
+      - iex -S mix phx.server

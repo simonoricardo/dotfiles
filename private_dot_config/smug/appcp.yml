@@ -1,0 +1,12 @@
+session: appcp
+
+root: ~/Programming/Work/appcp/
+
+windows:
+  - name: code
+    commands:
+      - nvim
+  - name: terminal
+    commands:
+      - make boot-db
+      - doppler run make start

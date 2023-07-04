@@ -1,0 +1,11 @@
+session: blueprint
+
+root: ~/Programming/Work/elixir-blueprint/
+
+windows:
+  - name: code
+    commands:
+      - nvim
+  - name: blueprint
+    commands:
+      - iex -S mix phx.server

@@ -1,0 +1,18 @@
+# Changing Window Focus
+
+# change window focus within space
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+alt - s : yabai -m display --focus west
+alt - g : yabai -m display --focus east
+
+# Modifying the layout
+
+# toggle window float
+alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# split horizontal
+alt - space : yabai -m window --toggle split
