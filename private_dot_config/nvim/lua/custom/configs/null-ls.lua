@@ -1,41 +1,32 @@
-local present, null_ls = pcall(require, "null-ls")
-
-if not present then
-  return
-end
-
-local b = null_ls.builtins
-
-local sources = {
-
-  -- webdev stuff
-  b.formatting.prettierd,
-
-  -- Lua
-  b.formatting.stylua,
-
-  -- elixir
-  b.formatting.mix.with {
-    filetypes = { "elixir", "heex", "eex", "leex" },
-  },
-  b.diagnostics.credo,
-}
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-null_ls.setup {
-  debug = true,
-  sources = sources,
-  on_attach = function(client, bufnr)
-    if client.supports_method "textDocument/formatting" then
-      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
-        end,
-      })
-    end
-  end,
-}
+-- local null_ls = require("null-ls")
+-- local sources = {
+--
+-- 	-- webdev stuff
+-- 	null_ls.builtins.formatting.prettierd,
+--
+-- 	-- Lua
+-- 	null_ls.builtins.formatting.stylua,
+--
+-- 	-- elixir
+-- 	null_ls.builtins.formatting.mix,
+-- 	null_ls.builtins.diagnostics.credo,
+-- }
+--
+-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+--
+-- null_ls.setup({
+-- 	debug = true,
+-- 	sources = sources,
+-- 	on_attach = function(client, bufnr)
+-- 		if client.supports_method("textDocument/formatting") then
+-- 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+-- 			vim.api.nvim_create_autocmd("BufWritePre", {
+-- 				group = augroup,
+-- 				buffer = bufnr,
+-- 				callback = function()
+-- 					vim.lsp.buf.format({ bufnr = bufnr })
+-- 				end,
+-- 			})
+-- 		end
+-- 	end,
+-- })

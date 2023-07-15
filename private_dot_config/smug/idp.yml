@@ -1,6 +1,6 @@
 session: idp
 
-root: ~/Programming/Work/idp/dev/
+root: ~/Programming/Work/idp/
 
 windows:
   - name: code
