@@ -71,6 +71,7 @@ autocmd("FileType", {
   end,
 })
 
+vim.cmd([[autocmd VimEnter * hi clear Error]])
 -- reload some chadrc options on-save
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.tbl_map(

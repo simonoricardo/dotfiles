@@ -249,7 +249,7 @@ M.nvimtree = {
 
 	n = {
 		-- focus
-		["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+		["<leader>e"] = { "<cmd> Neotree toggle filesystem reveal left <CR>", "toggle neo-tree" },
     ["<leader>o"] = { "<cmd> lua require('nvim-traveller').open_navigation() <cr>", "open file manager" },
 	},
 
