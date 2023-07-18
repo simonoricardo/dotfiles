@@ -307,7 +307,7 @@ local default_plugins = {
         -- see `:h neo-tree-global-custom-commands`
         commands = {},
         window = {
-          position = "left",
+          position = "float",
           width = 40,
           mapping_options = {
             noremap = true,

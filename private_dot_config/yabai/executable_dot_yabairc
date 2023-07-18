@@ -7,43 +7,73 @@
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 #
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-# sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 #
 
+# # applications with custom rules
+# applications="(Calendar|Mail|Reminders|Notes|Microsoft Outlook|Discord|Messages|Slack|Firefox|Chrome|Code|Microsoft Word|Preview|Terminal|iTerm2|QuickTime|Player|Spotify|Music|Arc|Kitty|Alacritty|Trello|Kitty)"
+#
+# # NOTE: you need to set the settings for the applications in the 
+# #       list first, or else they don't apply properly and you can end up with
+# #       some weird border/float/window behaviours
+#
+# # everything listed gets sent to below layer to prevent 
+# # them from covering floating applications/popup windows
+# yabai -m rule --add app="^${applications}$" manage=on layer=below
+
 # global settings
-yabai -m config                                 \
-    layout                       bsp            \
-    window_placement             second_child   \
-    top_padding                  12             \
-    bottom_padding               12             \
-    left_padding                 12             \
-    right_padding                12             \
-    window_gap                   12             \
-    mouse_follows_focus          off            \
-    focus_follows_mouse          off            \
-    mouse_modifier               alt            \
-    mouse_action1                move           \
-    mouse_action2                resize         \
-    mouse_drop_action            swap           \
+
+# get the dimensions for the main display
+height=$(system_profiler SPDisplaysDataType | grep Resolution | awk '{print $4}')
+
+# Set top_padding based on screen height
+if (( $height >= 2200 )); then
+    yabai -m config top_padding 12
+else
+    yabai -m config top_padding 50
+fi
+
+yabai -m config layout bsp
+yabai -m config window_placement second_child
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
     
-    window_origin_display        default        \
-    window_zoom_persist          on             \
-    window_topmost               off            \
-    window_shadow                on             \
-    window_animation_duration    0.0            \
-    window_animation_frame_rate  120            \
-    window_opacity_duration      0.0            \
-    active_window_opacity        1.0            \
-    normal_window_opacity        0.90           \
-    window_opacity               off            \
-    insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff775759     \
-    normal_window_border_color   0xff555555     \
-    window_border_width          4              \
-    window_border_radius         12             \
-    window_border_blur           on             \
-    window_border_hidpi          on             \
-    window_border                off            \
+yabai -m config window_topmost off
+yabai -m config window_shadow off
+yabai -m config window_animation_duration 0.1
+yabai -m config window_animation_frame_rate 120
+yabai -m config window_opacity on
+yabai -m config window_opacity_duration 0.1
+yabai -m config active_window_opacity 0.9
+yabai -m config normal_window_opacity 0.8
+yabai -m config window_border on 
+yabai -m config insert_feedback_color 0xffd75f5f
+yabai -m config active_window_border_color 0xff66ccff
+yabai -m config normal_window_border_color 0xff555555
+yabai -m config window_border_width 2
+yabai -m config window_border_radius 12
+yabai -m config window_border_blur on
+yabai -m config window_border_hidpi on
+
+yabai -m rule --add app="^Arc$" subrole='AXSystemDialog' manage=off mouse_follows_focus=off border=off layer=above sticky=on
+yabai -m rule --add app="^Arc$" subrole='AXDialog' manage=off mouse_follows_focus=off border=off layer=above sticky=on
+yabai -m rule --add app="System Preferences" manage=off border=off layer=above sticky=on
+yabai -m rule --add app="System Settings" manage=off border=off layer=above sticky=on
+yabai -m rule --add app="Übersicht" manage=off border=off layer=above sticky=on
+yabai -m rule --add app="Script Editor" manage=off border=off layer=above sticky=on
+
+yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
+yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar\"'"
+
+
 
 echo "yabai configuration loaded.."

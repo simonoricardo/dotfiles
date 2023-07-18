@@ -6,11 +6,3 @@ windows:
   - name: code
     commands:
       - nvim
-  - name: front
-    root: app
-    commands:
-      - make start
-  - name: back
-    root: api
-    commands:
-      - doppler run make start

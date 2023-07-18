@@ -27,9 +27,13 @@ $docker_context\
 [](fg:#06969A bg:#33658A)\
 $time\
 [ ](fg:#33658A)\
+ \n>> \
 """
 
-add_newline = true
+add_newline = false
+
+[line_break]
+disabled = false
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
@@ -101,46 +105,46 @@ format = '[$modified$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "fg:#c4c4c4 bg:#86BBD8"
+style = "fg:#444444 bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
